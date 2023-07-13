@@ -1,0 +1,14 @@
+package day06.solved;
+
+import java.util.*;
+
+public class ArrayToList {
+	public static void main(String[] args) {
+		String[] deptNames = new String[3];
+		deptNames[0] = "CSE";
+		deptNames[1] = "EEE";
+		deptNames[2] = "MECH";
+		List<String> list = Arrays.asList(deptNames);
+		System.out.println(list);
+	}
+}

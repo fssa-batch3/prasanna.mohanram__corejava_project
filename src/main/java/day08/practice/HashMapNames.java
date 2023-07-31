@@ -2,47 +2,42 @@ package day08.practice;
 
 import java.util.*;
 
-//public class HashMapNames {
-//	public static void main(String[] args) {
-//
-//		String[] s = { "Ram", "Ram", "Superman", "Spider", "hey", "hello", "hey", "Spider" };
-//		Map<String, Integer> nameMap = new TreeMap<String, Integer>();
-//
-//		for (int i = 0; i < s.length; i++) {
-//			if (nameMap.get(s[i]) == null) {
-//				nameMap.put(s[i], 1);
-//			} else {
-//				int count = nameMap.get(s[i]);
-//				count++;
-//				nameMap.put(s[i], count);
-//			}
-//		}
-//		for (String names : nameMap.keySet()) {
-//
-//			Integer count = nameMap.get(names);
-//			System.out.println(names + ": " + count);
-//		}
-//	}
-//}
-
 public class HashMapNames {
 	public static void main(String[] args) {
-		String[] s = { "Ram", "Ram", "Superman", "Spider", "hey", "hello", "hey", "Spider" };
-		Map<String, Integer> nameMap = countNames(s);
+		String s = "Ram,Ram,Superman,Spider,hey,hello,Spider";
 
-		for (String names : nameMap.keySet()) {
-			Integer count = nameMap.get(names);
-			System.out.println(names + ": " + count);
+		Map<String, Integer> countMap = countRepetation(s);
+
+		for (String element : countMap.keySet()) {
+
+			Integer count = countMap.get(element);
+			System.out.println(element + ": " + count);
+
 		}
+
 	}
 
-	public static Map<String, Integer> countNames(String[] namesArray) {
-		Map<String, Integer> nameMap = new TreeMap<>();
+	public static Map<String, Integer> countRepetation(String s) throws IllegalArgumentException {
 
-		for (String name : namesArray) {
-			nameMap.put(name, nameMap.getOrDefault(name, 0) + 1);
+		if (s == null || "".equals(s.trim())) {
+			throw new IllegalArgumentException("A string cannot be null or empty");
 		}
 
-		return nameMap;
+		String arr[] = s.split(",");
+		HashMap<String, Integer> countMap = new HashMap<String, Integer>();
+		for (int i = 0; i < arr.length; i++) {
+
+			if (countMap.get(arr[i]) == null) {
+				countMap.put(arr[i], 1);
+			} else {
+				int count = countMap.get(arr[i]);
+				count++;
+				countMap.put(arr[i], count);
+
+			}
+
+		}
+		return countMap;
+
 	}
 }

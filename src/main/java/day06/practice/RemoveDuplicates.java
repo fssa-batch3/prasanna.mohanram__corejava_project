@@ -4,41 +4,41 @@ import java.util.*;
 
 public class RemoveDuplicates {
 	public static void main(String[] args) {
+
 		List<String> cityList = new ArrayList<String>();
 		cityList.add("Chennai");
 		cityList.add("Bangalore");
 		cityList.add("Mumbai");
 		cityList.add("Mumbai");
 
-		List<String> uniqCity = new ArrayList<String>();
+		List<String> uniquecityList = new ArrayList<String>();
 
-		for (int i = 0; i < cityList.size(); i++) {
-			String city = cityList.get(i);
-			boolean repeated = false;
+		for (String city : cityList) {
+			if (uniquecityList.contains(city)) {
 
-			for (int j = 0; j < uniqCity.size(); j++) {
-				if (city.equals(uniqCity.get(j))) {
-					repeated = true;
-					break;
-				}
+				continue;
+			} else {
+				uniquecityList.add(city);
 			}
 
-			if (!repeated) {
-				uniqCity.add(city);
+		}
+
+		System.out.println(uniquecityList);
+
+	}
+
+	public static List<String> removeDuplicate(List<String> cityList) throws IllegalArgumentException {
+		List<String> uniquecityList = new ArrayList<String>();
+		if (cityList == null || cityList.size() == 0) {
+			throw new IllegalArgumentException("Array cannot be empty");
+
+		}
+		for (String city : cityList) {
+			if (!uniquecityList.contains(city)) {
+				uniquecityList.add(city);
 			}
-		}
 
-		List<String> printCity = new ArrayList<String>();
-
-		for (int i = 0; i < uniqCity.size(); i++) {
-			String city = uniqCity.get(i);
-			if (!city.equals("Mumbai")) {
-				printCity.add(city);
-			}
 		}
-
-		for (int i = 0; i < printCity.size(); i++) {
-			System.out.println(printCity.get(i));
-		}
+		return uniquecityList;
 	}
 }

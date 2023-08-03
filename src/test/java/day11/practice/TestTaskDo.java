@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 
 import day11.practice.*;
 
-public class TestTaskDo {
+public class TestTaskDao {
 
 	@Test
 	public void testValidTask() throws DAOException {
 		SQlTask task = new SQlTask("Learn java", "Completed");
 
-		Assertions.assertTrue(TaskDo.createTask(task));
+		Assertions.assertTrue(TaskDao.createTask(task));
 
 	}
 
@@ -20,7 +20,7 @@ public class TestTaskDo {
 
 		try {
 			SQlTask task = null;
-			TaskDo.createTask(task);
+			TaskDao.createTask(task);
 		}
 
 		catch (DAOException ex) {

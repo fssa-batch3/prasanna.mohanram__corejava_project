@@ -20,7 +20,7 @@ class Task {
 }
 
 // Create Junit Test case and test the TaskDao.createTask method
-public class TaskDo {
+public class TaskDao {
 
 	public static boolean createTask(Task task) throws DAOException {
 
